@@ -24,17 +24,17 @@ def question(question_id):
         return redirect(url_for('result'))
 
     if request.method == 'POST':
-        user_answer = request.form.get('answer')  # Получаем значение выбранного радиокнопки
+        user_answer = request.form.get('answer')  
         if user_answer:
-            user_answer = user_answer.strip().lower()  # Приведение к нижнему регистру для проверки
+            user_answer = user_answer.strip().lower()  
             if 'answers' not in session:
                 session['answers'] = {}
             session['answers'][str(question_id)] = user_answer
-            session.modified = True  # Явно указываем, что сессия была изменена
-            print("User Answers (after POST):", session['answers'])  # Отладочный вывод
+            session.modified = True  
+            print("User Answers (after POST):", session['answers'])  
         return redirect(url_for('question', question_id=question_id + 1))
 
-    print("User Answers (GET):", session.get('answers', {}))  # Отладочный вывод
+    print("User Answers (GET):", session.get('answers', {}))  
     return render_template('question.html', question=question)
 
 @app.route('/result')
@@ -47,7 +47,7 @@ def result():
     total_questions = len(questions)
     user_answers = session.get('answers', {})
 
-    print("User Answers at result page:", user_answers)  # Отладочный вывод
+    print("User Answers at result page:", user_answers)  
 
     for question in questions:
         question_id = str(question['id'])
