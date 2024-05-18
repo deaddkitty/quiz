@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Question</title>
+</head>
+<body>
+    <h1>Question {{ question['id'] }}</h1>
+    <form method="post">
+        <p>{{ question['question'] }}</p>
+        <input type="radio" name="answer" value="{{ question['option1'] }}"> {{ question['option1'] }}<br>
+        <input type="radio" name="answer" value="{{ question['option2'] }}"> {{ question['option2'] }}<br>
+        <input type="radio" name="answer" value="{{ question['option3'] }}"> {{ question['option3'] }}<br>
+        <input type="radio" name="answer" value="{{ question['option4'] }}"> {{ question['option4'] }}<br>
+        <input type="submit" value="Next">
+    </form>
+</body>
+</html>
